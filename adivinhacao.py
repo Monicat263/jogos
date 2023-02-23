@@ -14,6 +14,6 @@ if(numero_secreto == chute_convertido_utilizando_casting):
      print('Parabéns!!! Você acertou o número secreto')
 else:
     print('Você não acertou o número secreto')
-print('Fim do jogo')
+print('##Fim do jogo##')
 
 

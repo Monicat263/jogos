@@ -2,6 +2,7 @@
 # Regras: O usuário digitará um número e o programa retornará se ele acertou ou não este número
 # Definir um número qualquer
 
+import random
 
 print(
     "########################################################################################"
@@ -13,9 +14,9 @@ print("                                     Boa sorte!!!")
 print(
     "########################################################################################"
 )
-
-numero_secreto = 42
+numero_secreto  = random.randrange(1,101)
 max_tentativas = 3
+print(int(numero_secreto))
 
 for rodada in range(1, max_tentativas +1):
     print('Tentativas {0} de {1}'.format(rodada, max_tentativas))

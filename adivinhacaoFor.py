@@ -17,8 +17,6 @@ print(
 numero_secreto  = random.randrange(1,101)
 max_tentativas = 3
 
-print(numero_secreto)
-
 for rodada in range(1, max_tentativas +1):
     print('Tentativas {0} de {1}'.format(rodada, max_tentativas))
 

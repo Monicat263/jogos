@@ -59,8 +59,14 @@ for rodada in range(1, max_tentativas + 1):
     else:
         if chute_maior_que_numero_secreto:
             print('Você errou!!! Dica: O número digitado é maior que o número secreto')
+            if (rodada == max_tentativas):
+                print("O número secreto era {}. Você fez {}".format(
+                    numero_secreto, pontos))
         elif chute_menor_que_numero_secreto:
             print('Você errou!!! Dica: O número digitado é menor que o número secreto')
+            if (rodada == max_tentativas):
+                print("O número secreto era {}. Você fez {}".format(
+                    numero_secreto, pontos))
         #Cálculo pontos perdidos. Utilizada abs para eliminar a diferenças de sinais 
         pontos_perdidos = abs(numero_secreto - chute_convertido_utilizando_casting)
         pontos = pontos - pontos_perdidos

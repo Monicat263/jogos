@@ -4,14 +4,14 @@ import adivinhacaoWhile
 import adivinhacaoRefatorado
 import forca
 
-def escolhe_jogo():
+def seleciona_jogo():
     print('########################################################################################')
     print('Bem vindo(a) ao mundo python, escolha o seu jogo')
     print('                                     Boa sorte!!!')
     print('########################################################################################')
 
     #opções de jogos
-    print('(1) Forca (2) Adivinhação While (3) Adivinhação For (3) Adivinhação refatorado')
+    print('(1) Forca (2) Adivinhação While (3) Adivinhação For (4) Adivinhação refatorado')
 
         #conversão resposta do usuário de String para int
     resp_usuario = int(input("Selecione a opção do jogo: "))
@@ -27,12 +27,12 @@ def escolhe_jogo():
         print('você selecionou a opção adivinhação adivinhação For')
         adivinhacaoFor.jogar_adivinhacao_for()
     elif (resp_usuario == 4):
-        print('você selecionou a opção adivinhação adivinhação For')
-        adivinhacaoFor.jogar_adivinhacao_refatorado()
+        print('você selecionou a opção adivinhação adivinhação refatorada')
+        adivinhacaoRefatorado.jogar_adivinhacao_refatorado()
     else:
         print('opção inválida')
 
 # função necessária para rodar a classe atual, sem isso eu não consigo executar o código diretamente, apenas pela classe jogo
 if(__name__ =='__main__'):
-    escolhe_jogo()
+    seleciona_jogo()
 

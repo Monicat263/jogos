@@ -5,6 +5,7 @@
 
 import random
 
+
 def jogar_adivinhacao_for():
 
     print('########################################################################################')
@@ -27,6 +28,7 @@ def jogar_adivinhacao_for():
     #     nivel_incorreto  = input("Digite um número entre 1 e 3: ")
     #     if (nivel < 1 or nivel > 3):
     #         continue
+
     nivel_facil = nivel == 1
     nivel_medio = nivel == 2
     nivel_dificil = nivel == 3
@@ -42,7 +44,7 @@ def jogar_adivinhacao_for():
         print('Tentativas {} de {}'.format(rodada, max_tentativas))
 
         # função que permite que o usuário digite um valor no console
-        chute_do_usuario = input("Digite um número entre 1 e 100: ")
+        chute_do_usuario = input('Digite um número entre 1 e 100: ')
         print('Você digitou: ', chute_do_usuario)
 
         # Conversão da entrada do usuário de str(String) para int, assim consigo fazer a comparação
@@ -62,12 +64,12 @@ def jogar_adivinhacao_for():
             if chute_maior_que_numero_secreto:
                 print('Você errou!!! Dica: O número digitado é maior que o número secreto')
                 if (rodada == max_tentativas):
-                    print("O número secreto era {}. Você fez {}".format(
+                    print('O número secreto era {}. Você fez {}'.format(
                         numero_secreto, pontos))
             elif chute_menor_que_numero_secreto:
                 print('Você errou!!! Dica: O número digitado é menor que o número secreto')
                 if (rodada == max_tentativas):
-                    print("O número secreto era {}. Você fez {}".format(
+                    print('O número secreto era {}. Você fez {}'.format(
                         numero_secreto, pontos))
             #Cálculo pontos perdidos. Utilizada abs para eliminar a diferenças de sinais
             pontos_perdidos = abs(numero_secreto - chute_convertido_utilizando_casting)
@@ -76,6 +78,5 @@ def jogar_adivinhacao_for():
 
     print('## Fim do jogo ##')
 
-# função necessária para rodar a classe atual, sem isso eu não consigo executar o código diretamente, apenas pela classe jogo
-if(__name__=='__main__'):
+# função necessária para rodar a classe atual, sem isso eu não consigo executar o código diretamente, apenas pela classe jogoif(__name__=='__main__'):
     jogar_adivinhacao_for()

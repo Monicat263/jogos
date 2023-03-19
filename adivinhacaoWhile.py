@@ -25,9 +25,9 @@ def jogar_adivinhacao_while():
     print(numero_secreto)
 
     while(nivel < 1 or nivel > 3 ):
-        print("ESSE NÍVEL NÃO EXISTE, INSIRA UM NÍVEL VALIDO!\n")
-        print("Escolha a dificuldade.")
-        print("(1) Fácil | (2) Normal | (3) Difícil\n")
+        print('ESSE NÍVEL NÃO EXISTE, INSIRA UM NÍVEL VALIDO!\n')
+        print('Escolha a dificuldade.')
+        print('(1) Fácil | (2) Normal | (3) Difícil\n')
         nivel= int(input("Dificuldade: "))
 
         nivel_facil = nivel == 1
@@ -44,7 +44,7 @@ def jogar_adivinhacao_while():
     while(rodada <= max_tentativas):
         print('Tentativas {0} de {1}'.format(rodada,max_tentativas))
     # função que permite que o usuário digite um valor no console
-        chute_do_usuario = input("Digite um número entre 1 e 100:  ")
+        chute_do_usuario = input('Digite um número entre 1 e 100:  ')
     # Conversão da entrada do usuário de str(String) para int, assim consigo fazer a comparação
         chute_convertido_utilizando_casting = int(chute_do_usuario)
 
@@ -78,7 +78,7 @@ def jogar_adivinhacao_while():
         print(pontos)
         rodada = rodada +1
 
-    print("## Fim do jogo ##")
+    print('## Fim do jogo ##')
 
 # função necessária para rodar a classe atual, sem isso eu não consigo executar o código diretamente, apenas pela classe jogo
 if(__name__=='__main__'):

@@ -1,6 +1,7 @@
 # Classe principal responsavel por disponibilizar as opções de jogos para o o usuário selecionar#
 import adivinhacaoFor
 import adivinhacaoWhile
+import adivinhacaoRefatorado
 import forca
 
 def escolhe_jogo():
@@ -10,7 +11,7 @@ def escolhe_jogo():
     print('########################################################################################')
 
     #opções de jogos
-    print('(1) Forca (2) Adivinhação While (3) Adivinhação For')
+    print('(1) Forca (2) Adivinhação While (3) Adivinhação For (3) Adivinhação refatorado')
 
         #conversão resposta do usuário de String para int
     resp_usuario = int(input("Selecione a opção do jogo: "))
@@ -25,6 +26,9 @@ def escolhe_jogo():
     elif (resp_usuario==3):
         print('você selecionou a opção adivinhação adivinhação For')
         adivinhacaoFor.jogar_adivinhacao_for()
+    elif (resp_usuario == 4):
+        print('você selecionou a opção adivinhação adivinhação For')
+        adivinhacaoFor.jogar_adivinhacao_refatorado()
     else:
         print('opção inválida')
 

@@ -5,10 +5,19 @@
 
 import random
 def jogar_adivinhacao_while():
-    print('########################################################################################')
-    print('Bem vindo(a) ao jogo de adivinhação, você terá 3 tentativas para acerta o número secreto')
-    print('                                     Boa sorte!!!')
-    print('########################################################################################')
+    def gerar_linha_hashtags(comprimento):
+        """Gera uma linha horizontal com hashtags."""
+        return '#' * comprimento
+
+    linha = gerar_linha_hashtags(80)
+    texto_boas_vindas = 'Bem vindo(a) ao jogo de adivinhação'
+    texto_regra = 'você terá 3 tentativas para acertar o número secreto'
+    texto_boa_sorte = "Boa sorte!!!"
+
+    print(linha)
+    print(texto_boas_vindas)
+    print("{:^80}".format(texto_boa_sorte,texto_regra))
+    print(linha)
 
     numero_secreto = random.randrange(1,101)
     max_tentativas = 3
@@ -48,7 +57,7 @@ def jogar_adivinhacao_while():
     # Conversão da entrada do usuário de str(String) para int, assim consigo fazer a comparação
         chute_convertido_utilizando_casting = int(chute_do_usuario)
 
-    # Verificação se o número digitado está entre 1 ou 100
+    #Verificação se o número digitado está entre 1 ou 100 #
         if(chute_convertido_utilizando_casting < 1 or chute_convertido_utilizando_casting >= 100):
             continue
     # Declaração de variáveis com possiveis tipos de acerto

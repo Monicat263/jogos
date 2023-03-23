@@ -1,25 +1,25 @@
 import random
 
-texto1: str = '########################################################################################'
-texto: str = 'Boa sorte!!!'
-max_tentativas = 0
-rodada = 1
-pontos = 1000
+# numero_secreto: int = random.randrange(1, 101)
+max_tentativas: int = 0
+rodada: int = 1
+pontos: int = 1000
 
 
 def jogar_adivinhacao_refatorado():
-    print(f'{texto1:^88}')
-    print('Bem vindo(a) ao jogo de adivinhação ')
-    print('Regras: Selecione o nivel de 1 a 3 para iniciar.')
-    print('De acordo com o nível selecionado você terá mais ou menos tentativas para acerta o número secreto ')
-    print('Sendo:')
-    print('       Nivel (1) = 8 tentativas')
-    print('       Nivel (2) = 5 tentativas')
-    print('       Nivel (3) = 3 tentativas\n')
-    print(f'{texto:^88}')
-    print('########################################################################################')
-    # utilizar caso queira loop do jogo
-    # definir_nivel()
+    def gerar_linha_hashtags(comprimento):
+        # Gera uma linha horizontal com hashtags.#
+        return '#' * comprimento
+
+    linha: str = gerar_linha_hashtags(80)
+    texto_boas_vindas: str = 'Bem vindo(a) ao jogo de adivinhação'
+    texto_regra: str = 'você terá 3 tentativas para acertar o número secreto'
+    texto_boa_sorte: str = "Boa sorte!!!"
+
+    print(linha)
+    print(texto_boas_vindas)
+    print("{:^80}".format(texto_boa_sorte + "" + texto_regra))
+    print(linha)
 
 
 def definir_nivel():
@@ -32,7 +32,8 @@ def definir_nivel():
         try:
             nivel = int(input('Defina o nível: '))
             if nivel not in [1, 2, 3]:
-                msg_invalido = 'ESSE NÍVEL NÃO EXISTE, INSIRA UM NÍVEL VÁLIDO!'
+                msg_invalido: str = 'ESSE NÍVEL NÃO EXISTE,' \
+                                    'INSIRA UM NÍVEL VÁLIDO!'
                 raise ValueError(msg_invalido)
             break
         except ValueError:
@@ -57,8 +58,8 @@ def gerar_numero_secreto():
 
 def iniciar_rodada():
     global rodada, pontos
-    numero_secreto = gerar_numero_secreto()
-    jogo_finalizou = False
+    numero_secreto: int = gerar_numero_secreto()
+    jogo_finalizou: bool = False
 
     while rodada <= max_tentativas and not jogo_finalizou:
         print(f'Tentativas {rodada} de {max_tentativas}')
@@ -73,9 +74,12 @@ def iniciar_rodada():
 
         chute_convertido_com_casting = int(chute_do_usuario)
 
-        acertou_numero_secreto = chute_convertido_com_casting == numero_secreto
-        chute_maior_que_numero_secreto = chute_convertido_com_casting > numero_secreto
-        chute_menor_que_numero_secreto = chute_convertido_com_casting < numero_secreto
+        acertou_numero_secreto = chute_convertido_com_casting == \
+                                 numero_secreto
+        chute_maior_que_numero_secreto = chute_convertido_com_casting > \
+                                         numero_secreto
+        chute_menor_que_numero_secreto = chute_convertido_com_casting < \
+                                         numero_secreto
 
         if acertou_numero_secreto:
             msg_acertou = 'Parabéns!!! Você acertou o número secreto é'
@@ -85,15 +89,18 @@ def iniciar_rodada():
 
         else:
             if chute_maior_que_numero_secreto:
-                msg_maior = 'Você errou!!!'
-                msg_dica = 'Dica: Número digitado é maior que o número secreto'
+                msg_maior: str = 'Você errou!!!'
+                msg_dica: str = 'Dica: Número digitado é maior' \
+                                'que o número secreto'
                 print(f'{msg_maior}, {msg_dica}')
             elif chute_menor_que_numero_secreto:
-                msg_menor = 'Você errou!!!'
-                msg_dica = 'Dica: Número digitado é menor que o número secreto'
+                msg_menor: str = 'Você errou!!!'
+                msg_dica: str = 'Dica: Número digitado é menor' \
+                                'que o número secreto'
                 print(f'{msg_menor}, {msg_dica}')
-            calculo_abs = abs(numero_secreto - chute_convertido_com_casting)
-            pontos_perdidos = calculo_abs
+            calculo_abs: int = abs(
+                numero_secreto - chute_convertido_com_casting)
+            pontos_perdidos: int = calculo_abs
             pontos = pontos - pontos_perdidos
 
             if rodada == max_tentativas:

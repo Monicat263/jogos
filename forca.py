@@ -5,21 +5,25 @@ def jogar():
     print('#' * 65)
 
     palavra_secreta = 'BANANA'
+    letras_acertadas = [' _ '* 6]
 
     enforcou = False
     acertou = False
 
+    # para iniciar o jogo mostrando a a forca
+    print(letras_acertadas)
     while (not enforcou and not acertou):
-
+        #lower retorna a string com todas as letras minusculas
         chute = input('Digite uma letra: ').lower()
-
+        chute = chute.strip() #remover espaços em branco#
 
         posicao = 0
         for letra in palavra_secreta:
-            if (chute == letra.lower()):
-                print('Encontrei a letra {}	na posição	{}'.format(letra, posicao))
-            posicao = posicao + 1
-        print('Jogando...')
+            if (chute.lower() == letra.lower()):
+                letras_acertadas[posicao] = letra
+            posicao = posicao +1
+
+        print(letras_acertadas)
 
     print("## Fim do jogo ##")
 

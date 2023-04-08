@@ -1,67 +1,79 @@
 import random
-import string
+
+
 def jogar():
-    global palavras
-    print('#' * 65)
-    print('Bem vindo(a) ao jogo de forca')
-    print('                        Boa sorte!!!')
-    print('#' * 65)
 
-    # criar e ler arquivo
-    arquivo = open('palavras.txt','r')
-    palavras = []  # criei uma lista vazia para receber as palavras
-    #Laço para ler cada linha do arquivo
-    for linha in arquivo:
-        linha = linha.strip() # leitura linha a linha tirando espaços
-        palavras.append(linha)
-    arquivo.close()
+    imprime_msg_inicial()
+    palavra_secreta = selecione_palavra_secreta()
 
-    #Gera a lista aleatóriamente, o len é útil p/ saber o tamanho da lista
-    numero: int = random.randrange(0,len(palavras))
-    palavra_secreta: str = palavras[numero].lower()
-    #para apresentar os espaçamentos de forma dinâmica
-    letras_acertadas: list = [' _ '] * len(palavra_secreta)
-    # também tem uma outra opção que é:
-    #letras_acertadas= [' _ ' for letra in palavra_secreta]
-    print(palavra_secreta)
-
-    enforcou  = False
-    acertou: bool = False
-    # analisa se as tentativas são do mesmo tamanho da palavra secteta
-    tentativas: int = len(palavra_secreta) -1
-
-    # para iniciar o jogo mostrando a a forca
+    letras_acertadas = inicializa_letras_acertadas(palavra_secreta)
     print(letras_acertadas)
 
-    while not enforcou and not acertou:
-        # lower retorna a string com todas as letras minusculas
-        chute = input('Digite uma letra: ').lower()
-        chute = chute.strip() # strip remover espaços em branco#
+    enforcou = False
+    acertou = False
+    erros = 0
 
-        # verificar se letra  existe na palavra sescreta
-        if chute in palavra_secreta:
-            posicao: int = 0
-            for letra in palavra_secreta:
-                if chute == letra:
-                    letras_acertadas[posicao] = letra
-                posicao += 1
+    print(palavra_secreta)
+
+    while (not enforcou and not acertou):
+
+        chute = chute_usuario()
+
+        if (chute in palavra_secreta):
+            marca_chute_correto(chute, letras_acertadas, palavra_secreta)
         else:
-            tentativas -= 1
-        # enquanto _ ñ existir dentro das letras acertadas ai pode encerrar
-        acertou = ' _ ' not in letras_acertadas
-        # usa o número de letras da palavra secreta como limite de tentativas
-        enforcou = tentativas == 0
+            erros += 1
+
+        enforcou = erros == 6
+        acertou = '_' not in letras_acertadas
         print(letras_acertadas)
 
-    if acertou:
-        print(f'Parabéns, você acertou a palavra secreta é: {palavra_secreta}')
+    if (acertou):
+        imprime_msg_ganhador()
     else:
-        print(f'Não foi dessa vez, você perdeu.'
-              f' A palavra secreta era:'f'{palavra_secreta}')
+        imprime_msg_perdedor()
 
-    print("## Fim do jogo ##")
+    print('Fim do jogo')
 
-    # função necessária para rodar a classe atual, sem isso eu não consigo
-    # executar o código diretamente, apenas pela classe jogo
-if (__name__ == '__main__'):
+def imprime_msg_inicial():
+    print("*********************************")
+    print("***Bem vindo ao jogo da Forca!***")
+    print("*********************************")
+
+def selecione_palavra_secreta():
+    arquivo = open('palavras.txt', 'r')
+    palavras = []
+
+    for linha in arquivo:
+        linha = linha.strip()
+        palavras.append(linha)
+
+    arquivo.close()
+
+    numero = random.randrange(0, len(palavras))
+    palavra_secreta = palavras[numero].upper()
+    return palavra_secreta
+
+def inicializa_letras_acertadas(palavra):
+    return ['_' for letra in palavra]
+
+def chute_usuario():
+    chute = input('Digite uma letra ')
+    chute = chute.strip().upper()
+    return chute
+
+def marca_chute_correto(chute, letras_acertadas, palavra_secreta):
+    index = 0
+    for letra in palavra_secreta:
+        if (chute == letra):
+            letras_acertadas[index] = letra
+        index += 1
+
+def imprime_msg_ganhador():
+    print('Parabéns você ganhou!!!')
+
+def imprime_msg_perdedor():
+    print('Não foi desta vez, você perdeu!!!')
+
+if (__name__ == "__main__"):
     jogar()

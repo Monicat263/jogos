@@ -13,8 +13,6 @@ def jogar():
     acertou = False
     erros = 0
 
-    print(palavra_secreta)
-
     while (not enforcou and not acertou):
 
         chute = chute_usuario()
@@ -31,14 +29,14 @@ def jogar():
     if (acertou):
         imprime_msg_ganhador()
     else:
-        imprime_msg_perdedor()
+        imprime_msg_perdedor(palavra_secreta)
 
     print('Fim do jogo')
 
 def imprime_msg_inicial():
-    print("*********************************")
-    print("***Bem vindo ao jogo da Forca!***")
-    print("*********************************")
+    print('*' * 33)
+    print('  Bem vindo ao jogo da Forca!  ')
+    print('*' * 33)
 
 def selecione_palavra_secreta():
     arquivo = open('palavras.txt', 'r')
@@ -70,10 +68,40 @@ def marca_chute_correto(chute, letras_acertadas, palavra_secreta):
         index += 1
 
 def imprime_msg_ganhador():
-    print('Parabéns você ganhou!!!')
 
-def imprime_msg_perdedor():
-    print('Não foi desta vez, você perdeu!!!')
+    print("Expetacular, você ganhou!!!")
+    print("       ___________      ")
+    print("      '._==_==_=_.'     ")
+    print("      .-\\:      /-.    ")
+    print("     | (|:.     |) |    ")
+    print("      '-|:.     |-'     ")
+    print("        \\::.    /      ")
+    print("         '::. .'        ")
+    print("           ) (          ")
+    print("         _.' '._        ")
+    print("        '-------'       ")
+
+
+def imprime_msg_perdedor(palavra_secreta):
+    print("Fim da linha, você foi enforcado,kkkk!!!")
+
+    print("    _______________         ")
+    print("   /               \       ")
+    print("  /                 \      ")
+    print("//                   \/\  ")
+    print("\|   XXXX     XXXX   | /   ")
+    print(" |   XXXX     XXXX   |/     ")
+    print(" |   XXX       XXX   |      ")
+    print(" |                   |      ")
+    print(" \__      XXX      __/     ")
+    print("   |\     XXX     /|       ")
+    print("   | |           | |        ")
+    print("   | I I I I I I I |        ")
+    print("   |  I I I I I I  |        ")
+    print("   \_             _/       ")
+    print("     \_         _/         ")
+    print("       \_______/           ")
+    print("A palavra secreta era {}".format(palavra_secreta))
 
 if (__name__ == "__main__"):
     jogar()
